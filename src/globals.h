@@ -773,6 +773,13 @@ namespace ADDVOICE // usage ADDVOICE::control::volume
         voiceOscillatorSource, // - 1 internal, 'n' external voice
         soundType // Oscillator, White noise, Pink noise, Spot noise
     };
+
+    enum voiceType : unsigned char {
+        sound = 0,
+        whiteNoise = 1,
+        pinkNoise = 2,
+        spotNoise = 3
+    };
 }
 
 namespace SUBSYNTH // usage SUBSYNTH::control::volume

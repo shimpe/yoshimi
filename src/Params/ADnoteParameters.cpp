@@ -116,7 +116,7 @@ void ADnoteParameters::defaults(int n)
     VoicePar[nvoice].Unison_invert_phase = 0;
     VoicePar[nvoice].Unison_phase_randomness = 127;
 
-    VoicePar[nvoice].Type = 0;
+    VoicePar[nvoice].Type = ADDVOICE::voiceType::sound;
     VoicePar[nvoice].Pfixedfreq = 0;
     VoicePar[nvoice].PfixedfreqET = 0;
     VoicePar[nvoice].PBendAdjust = 88; // 64 + 24

@@ -440,7 +440,7 @@ void ADnote::construct()
 
         bool is_pwm = adpars->VoicePar[nvoice].PFMEnabled == PW_MOD;
 
-        if (adpars->VoicePar[nvoice].Type != 0)
+        if (adpars->VoicePar[nvoice].Type != ADDVOICE::voiceType::sound)
         {
             // Since noise unison of greater than two is touch goofy...
             if (unison > 2)
@@ -562,7 +562,7 @@ void ADnote::construct()
         NoteVoicePar[nvoice].FilterEnvelope = NULL;
         NoteVoicePar[nvoice].FilterLfo = NULL;
 
-        if (adpars->VoicePar[nvoice].Type != 0)
+        if (adpars->VoicePar[nvoice].Type != ADDVOICE::voiceType::sound)
             NoteVoicePar[nvoice].FMEnabled = NONE;
         else
             switch (adpars->VoicePar[nvoice].PFMEnabled)
@@ -2407,7 +2407,7 @@ void ADnote::computeVoiceOscillator(int nvoice)
     } else {
         switch (NoteVoicePar[nvoice].noisetype)
         {
-            case 0: //  sound
+            case ADDVOICE::voiceType::sound: //  sound
                 // There may be frequency modulation coming from the parent,
                 // even if this oscillator itself does not have it.
                 if (parentFMmod != NULL && forFM)
@@ -2417,14 +2417,16 @@ void ADnote::computeVoiceOscillator(int nvoice)
                 else
                     computeVoiceOscillatorLinearInterpolation(nvoice);
                 break;
-            case 1:
+            case ADDVOICE::voiceType::whiteNoise:
                 computeVoiceNoise(nvoice); // white noise
                 break;
-            case 2:
+            case ADDVOICE::voiceType::pinkNoise:
                 ComputeVoicePinkNoise(nvoice); // pink noise
                 break;
+            case ADDVOICE::voiceType::spotNoise:
             default:
                 ComputeVoiceSpotNoise(nvoice); // spot noise
+                break;
         }
     }
 
