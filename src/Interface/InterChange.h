@@ -53,7 +53,7 @@ class InterChange : private DataText
         ~InterChange();
         bool Init();
 
-        CommandBlock commandData;
+        CommandBlock commandData{};
 #ifndef YOSHIMI_LV2_PLUGIN
         ringBuff *fromCLI;
 #endif
@@ -62,7 +62,7 @@ class InterChange : private DataText
         ringBuff *toGUI;
         ringBuff *fromMIDI;
         ringBuff *returnsBuffer;
-        ringBuff *muteQueue;
+        ringBuff *muteQueue{};
 
         void generateSpecialInstrument(int npart, std::string name);
         void mediate(void);
@@ -84,7 +84,7 @@ class InterChange : private DataText
     private:
         void *sortResultsThread(void);
         static void *_sortResultsThread(void *arg);
-        pthread_t  sortResultsThreadHandle;
+        pthread_t  sortResultsThreadHandle{};
         void muteQueueWrite(CommandBlock *getData);
         void indirectTransfers(CommandBlock *getData, bool noForward = false);
         std::string formatScales(std::string text);

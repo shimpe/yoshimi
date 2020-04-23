@@ -55,7 +55,7 @@ static void resetRecent(void*){
 
 DynTooltip::DynTooltip():Fl_Menu_Window(1,1)
 {
-
+    currentValue = 0;
     tipText.clear();
     valueText.clear();
 
